@@ -8,30 +8,37 @@
     <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32" />
     <link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16" />
     <style>
-      html
-      {
+      html {
         box-sizing: border-box;
         overflow: -moz-scrollbars-vertical;
         overflow-y: scroll;
       }
 
-      *,
-      *:before,
-      *:after
-      {
+      *, *:before, *:after {
         box-sizing: inherit;
       }
 
-      body
-      {
+      body {
         margin:0;
-        background: #fafafa;
+        background: #333;
       }
+      
+      #container {
+        padding: 1px 15px;
+        background: white;
+      }
+      
+      @media all and (min-width: 1000) {
+        #container {
+          margin: 0px 15%;
+        }
+      }
+      
     </style>
   </head>
 
   <body>
-    <div id="swagger-ui"></div>
+    <div id="container"></div>
 
     <script src="./swagger-ui-bundle.js"> </script>
     <script src="./swagger-ui-standalone-preset.js"> </script>
@@ -39,8 +46,8 @@
     window.onload = function() {
       // Begin Swagger UI call region
       const ui = SwaggerUIBundle({
-        url: "https://raw.githubusercontent.com/rubybb/swagger-test/master/spec.json",
-        dom_id: '#swagger-ui',
+        url: "https://raw.githubusercontent.com/vrchatapi/specification/master/openapi.yaml",
+        dom_id: '#container',
         deepLinking: true,
         presets: [
           SwaggerUIBundle.presets.apis,
