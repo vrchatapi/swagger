@@ -7,16 +7,20 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x, 12.x]
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-java@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
         with:
-          java-version: '9.0.4'
-          java-package: jdk
-          architecture: x64
-      - run: wget https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.20/swagger-codegen-cli-3.0.20.jar -O swagger-codegen-cli.jar
-      - run: java -jar swagger-codegen-cli.jar generate -i spec.json -l dynamic-html
-      - run: mv docs/* .
+          node-version: ${{ matrix.node-version }}
+      - run: npm install -g bootprint
+      - run: npm install -g bootprint-openapi
+      - name: Build HTML
+      - run: bootprint spec.json .
+      - name: Deplay to Vercel
       - uses: amondnet/vercel-action@v19
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
