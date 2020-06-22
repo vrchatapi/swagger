@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>Swagger UI</title>
+    <title>VRChat API</title>
     <link rel="stylesheet" type="text/css" href="./swagger-ui.css" >
     <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32" />
     <link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16" />
@@ -28,7 +28,7 @@
         background: white;
       }
       
-      @media all and (min-width: 1000) {
+      @media all and (min-width: 1000px) {
         #container {
           margin: 0px 15%;
         }
@@ -55,11 +55,11 @@
         ],
         plugins: [],
         layout: "StandaloneLayout"
-      })
-      // End Swagger UI call region
+      });
       
       window.ui = ui;
       document.querySelector(".topbar").remove();
+      document.querySelector(".wrapper").remove();
     }
   </script>
   </body>
