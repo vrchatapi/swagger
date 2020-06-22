@@ -15,7 +15,8 @@ jobs:
           java-package: jdk
           architecture: x64
       - run: wget https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.20/swagger-codegen-cli-3.0.20.jar -O swagger-codegen-cli.jar
-      - run: java -jar swagger-codegen-cli.jar generate -i spec.json -l html
+      - run: java -jar swagger-codegen-cli.jar generate -i spec.json -l dynamic-html
+      - run: mv docs/* .
       - uses: amondnet/vercel-action@v19
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
