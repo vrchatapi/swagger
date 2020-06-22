@@ -16,10 +16,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm install -g bootprint
-      - run: npm install -g bootprint-openapi
-      - name: Build HTML
-        run: bootprint openapi spec.json ./
+      - run: npm install swagger-ui-dist
+      - run: wget https://github.com/swagger-api/swagger-ui/archive/master.zip
+      - run: unzip master.zip
+      - run: ls
       - name: Deplay to Vercel
         uses: amondnet/vercel-action@v19
         with:
