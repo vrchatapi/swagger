@@ -16,10 +16,9 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm install swagger-ui-dist
       - run: wget https://github.com/swagger-api/swagger-ui/archive/master.zip
       - run: unzip master.zip
-      - run: ls
+      - run: mv swagger-ui-master/dist/* ./
       - name: Deplay to Vercel
         uses: amondnet/vercel-action@v19
         with:
