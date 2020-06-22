@@ -19,9 +19,9 @@ jobs:
       - run: npm install -g bootprint
       - run: npm install -g bootprint-openapi
       - name: Build HTML
-      - run: bootprint spec.json .
+        run: bootprint spec.json ./
       - name: Deplay to Vercel
-      - uses: amondnet/vercel-action@v19
+        uses: amondnet/vercel-action@v19
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-args: '--prod'
